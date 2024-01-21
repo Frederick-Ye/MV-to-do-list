@@ -1,11 +1,12 @@
 import {
-  tasks,
   taskInput,
   clearBtn,
   addBtn,
   taskContainer,
   resetBtn,
 } from './src/variables.js';
+
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 const saveTasksToLocalStorage = () => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -21,7 +22,7 @@ const displayTask = () => {
       ${task.description}
     </div>
     <div><i class="bx bx-dots-vertical-rounded"></i></div>`;
-    const checkbox = listItem.querySelector(".checkbox");
+    const checkbox = listItem.querySelector('.checkbox');
     checkbox.addEventListener('change', () => {
       task.completed = checkbox.checked;
       saveTasksToLocalStorage();
@@ -51,7 +52,7 @@ const removeAll = () => {
 
 const removeCheckedTasks = () => {
   tasks = tasks.filter(
-    (task) => !document.getElementById('checkbox_${task.checkboxId}').checked,
+    (task) => !document.getElementById(`checkbox_${task.checkboxId}`).checked,
   );
   tasks.forEach((task, index) => {
     task.index = index + 1;

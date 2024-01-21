@@ -1,4 +1,3 @@
-export const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 export const taskInput = document.querySelector('.addListField');
 export const clearBtn = document.getElementById('clearBtn');
 export const addBtn = document.querySelector('.bx-list-plus');
