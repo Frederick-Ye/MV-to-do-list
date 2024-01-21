@@ -5,24 +5,24 @@ import {
   addBtn,
   taskContainer,
   resetBtn,
-} from "./src/variables.js";
+} from './src/variables.js';
 
 const saveTasksToLocalStorage = () => {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
 const displayTask = () => {
-  taskContainer.innerHTML = "";
+  taskContainer.innerHTML = '';
 
   tasks.forEach((task) => {
-    const listItem = document.createElement("li");
+    const listItem = document.createElement('li');
     listItem.innerHTML = `<div>
       <input class="checkbox" id="checkbox_${task.checkboxId}" type="checkbox"/>
       ${task.description}
     </div>
     <div><i class="bx bx-dots-vertical-rounded"></i></div>`;
     const checkbox = listItem.querySelector(".checkbox");
-    checkbox.addEventListener("change", () => {
+    checkbox.addEventListener('change', () => {
       task.completed = checkbox.checked;
       saveTasksToLocalStorage();
     });
@@ -40,7 +40,7 @@ const addTask = () => {
   tasks.push(newTask);
   saveTasksToLocalStorage();
   displayTask();
-  taskInput.value = "";
+  taskInput.value = '';
 };
 
 const removeAll = () => {
@@ -51,7 +51,7 @@ const removeAll = () => {
 
 const removeCheckedTasks = () => {
   tasks = tasks.filter(
-    (task) => !document.getElementById(`checkbox_${task.checkboxId}`).checked
+    (task) => !document.getElementById('checkbox_${task.checkboxId}').checked,
   );
   tasks.forEach((task, index) => {
     task.index = index + 1;
@@ -61,7 +61,7 @@ const removeCheckedTasks = () => {
   displayTask();
 };
 
-addBtn.addEventListener("click", addTask);
-resetBtn.addEventListener("click", removeAll);
-clearBtn.addEventListener("click", removeCheckedTasks);
+addBtn.addEventListener('click', addTask);
+resetBtn.addEventListener('click', removeAll);
+clearBtn.addEventListener('click', removeCheckedTasks);
 displayTask();
