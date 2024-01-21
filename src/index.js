@@ -18,7 +18,7 @@ const displayTask = () => {
 
   tasks.forEach((task) => {
     const listItem = document.createElement('li');
-    listItem.innerHTML = `<div>
+    listItem.innerHTML = `<div class="description">
       <input class="checkbox" id="checkbox_${task.checkboxId}" type="checkbox" ${
   task.completed ? 'checked' : ''
 }/>
