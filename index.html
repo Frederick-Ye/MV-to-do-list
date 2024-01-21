@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do-list</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <ul>
+      <li class="title">
+        <div>Today's To Do</div>
+        <div><i class="bx bx-recycle"></i></div>
+      </li>
+      <li class="addListContainer">
+        <div>
+          <input
+            class="addListField"
+            type="text"
+            placeholder="Add to your list..."
+          />
+        </div>
+        <div><i class="bx bx-list-plus"></i></div>
+      </li>
+      <div class="dynamicContent">
+          <!-- tasks go here -->
+      </div>
+      <div class="clearBtnContainer">
+        <button type="button" id="clearBtn">Clear all completed</button>
+      </div>
+    </ul>
+
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./src/variables.js"></script>
+  </body>
+</html>
