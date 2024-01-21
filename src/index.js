@@ -4,7 +4,9 @@ import {
   addBtn,
   taskContainer,
   resetBtn,
-} from './src/variables.js';
+} from './variables.js';
+import _ from 'lodash';
+import './style.css';
 
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
