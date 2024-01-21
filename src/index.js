@@ -20,7 +20,9 @@ const displayTask = () => {
   tasks.forEach((task) => {
     const listItem = document.createElement('li');
     listItem.innerHTML = `<div>
-      <input class="checkbox" id="checkbox_${task.checkboxId}" type="checkbox"/>
+      <input class="checkbox" id="checkbox_${task.checkboxId}" type="checkbox" ${
+      task.completed ? 'checked' : ''
+    }/>
       ${task.description}
     </div>
     <div><i class="bx bx-dots-vertical-rounded"></i></div>`;
