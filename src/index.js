@@ -54,13 +54,14 @@ const removeAll = () => {
 };
 
 const removeCheckedTasks = () => {
-  tasks = tasks.filter(
+  const uncheckedTasks = tasks.filter(
     (task) => !document.getElementById(`checkbox_${task.checkboxId}`).checked,
   );
-  tasks.forEach((task, index) => {
+  uncheckedTasks.forEach((task, index) => {
     task.index = index + 1;
     task.checkboxId = index + 1;
   });
+  tasks = uncheckedTasks;
   saveTasksToLocalStorage();
   displayTask();
 };
