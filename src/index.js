@@ -4,29 +4,29 @@ import {
   addBtn,
   taskContainer,
   resetBtn,
-} from "./variables.js";
-import "./style.css";
+} from './variables.js';
+import './style.css';
 
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 const saveTasksToLocalStorage = () => {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
 const displayTask = () => {
-  taskContainer.innerHTML = "";
+  taskContainer.innerHTML = '';
 
   tasks.forEach((task) => {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = `<div class="description">
-      <input class="checkbox" id="checkbox_${
-        task.checkboxId
-      }" type="checkbox" ${task.completed ? "checked" : ""}/>
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `<div class='description'>
+      <input class='checkbox' id='checkbox_${
+  task.checkboxId
+}' type='checkbox' ${task.completed ? 'checked' : ''}/>
       ${task.description}
     </div>
-    <div><i class="bx bx-dots-vertical-rounded"></i></div>`;
-    const checkbox = listItem.querySelector(".checkbox");
-    checkbox.addEventListener("change", () => {
+    <div><i class='bx bx-dots-vertical-rounded'></i></div>`;
+    const checkbox = listItem.querySelector('.checkbox');
+    checkbox.addEventListener('change', () => {
       task.completed = checkbox.checked;
       saveTasksToLocalStorage();
     });
@@ -58,7 +58,7 @@ const removeAll = () => {
 
 const removeCheckedTasks = () => {
   const uncheckedTasks = tasks.filter(
-    (task) => !document.getElementById(`checkbox_${task.checkboxId}`).checked
+    (task) => !document.getElementById(`checkbox_${task.checkboxId}`).checked,
   );
   uncheckedTasks.forEach((task, index) => {
     task.index = index + 1;
@@ -69,7 +69,7 @@ const removeCheckedTasks = () => {
   displayTask();
 };
 
-addBtn.addEventListener("click", addTask);
-resetBtn.addEventListener("click", removeAll);
-clearBtn.addEventListener("click", removeCheckedTasks);
+addBtn.addEventListener('click', addTask);
+resetBtn.addEventListener('click', removeAll);
+clearBtn.addEventListener('click', removeCheckedTasks);
 displayTask();
