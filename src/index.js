@@ -35,7 +35,9 @@ const displayTask = () => {
 };
 
 const addTask = () => {
-  const newTask = {
+  const description = taskInput.value.trim();
+  if(description != '') {
+    const newTask = {
     description: taskInput.value,
     index: tasks.length + 1,
     checkboxId: tasks.length + 1,
@@ -45,7 +47,7 @@ const addTask = () => {
   saveTasksToLocalStorage();
   displayTask();
   taskInput.value = '';
-};
+}};
 
 const removeAll = () => {
   tasks = [];
