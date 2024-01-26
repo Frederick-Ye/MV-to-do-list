@@ -13,6 +13,27 @@ const saveTasksToLocalStorage = () => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
+const displayTask = () => {
+  taskContainer.innerHTML = '';
+
+  tasks.forEach((task) => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `<div class='description'>
+      <input class='checkbox' id='checkbox_${
+  task.checkboxId
+}' type='checkbox' ${task.completed ? 'checked' : ''}/>
+      <div class='taskDescription'>${task.description}</div>
+    </div>
+    <div class='editBtn'><i class='bx bx-dots-vertical-rounded editBtn'></i></div>`;
+    const checkbox = listItem.querySelector('.checkbox');
+    checkbox.addEventListener('change', () => {
+      task.completed = checkbox.checked;
+      saveTasksToLocalStorage();
+    });
+    taskContainer.appendChild(listItem);
+  });
+};
+
 const convertToInput = () => {
   const taskDescription = document.querySelector('.taskDescription');
   if (taskDescription) {
@@ -34,33 +55,6 @@ const convertToInput = () => {
       }
     });
   }
-};
-
-const displayTask = () => {
-  taskContainer.innerHTML = '';
-
-  tasks.forEach((task) => {
-    const listItem = document.createElement('li');
-    listItem.innerHTML = `<div class='description'>
-      <input class='checkbox' id='checkbox_${
-  task.checkboxId
-}' type='checkbox' ${task.completed ? 'checked' : ''}/>
-      <div class='taskDescription'>${task.description}</div>
-    </div>
-    <div class='editBtn'><i class='bx bx-dots-vertical-rounded editBtn'></i></div>`;
-    const checkbox = listItem.querySelector('.checkbox');
-    checkbox.addEventListener('change', () => {
-      task.completed = checkbox.checked;
-      saveTasksToLocalStorage();
-    });
-    taskContainer.appendChild(listItem);
-  });
-  taskContainer.addEventListener('click', (event) => {
-    const editBtn = event.target.closest('.editBtn'); // Find the closest ancestor with the class 'editBtn'
-    if (editBtn) {
-      convertToInput();
-    }
-  });
 };
 
 const addTask = () => {
@@ -101,5 +95,11 @@ const removeCheckedTasks = () => {
 addBtn.addEventListener('click', addTask);
 resetBtn.addEventListener('click', removeAll);
 clearBtn.addEventListener('click', removeCheckedTasks);
+taskContainer.addEventListener('click', (event) => {
+  const editBtn = event.target.closest('.editBtn');
+  if (editBtn) {
+    convertToInput();
+  }
+});
 
 displayTask();
