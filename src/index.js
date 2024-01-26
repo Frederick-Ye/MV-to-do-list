@@ -13,6 +13,29 @@ const saveTasksToLocalStorage = () => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
+const convertToInput = () => {
+  const taskDescription = document.querySelector('.taskDescription');
+  if (taskDescription) {
+    const inputElement = document.createElement('input');
+    inputElement.value = taskDescription.innerText;
+    inputElement.classList.add('inputElement');
+    taskDescription.replaceWith(inputElement);
+    inputElement.focus();
+
+    inputElement.addEventListener('blur', () => {
+      const updatedDescription = inputElement.value.trim();
+      if (inputElement !== '') {
+        const taskIndex = tasks.findIndex(
+          (task) => task.description === taskDescription.innerText,
+        );
+        tasks[taskIndex].description = updatedDescription;
+        saveTasksToLocalStorage();
+        displayTask();
+      }
+    });
+  }
+};
+
 const displayTask = () => {
   taskContainer.innerHTML = '';
 
@@ -74,30 +97,6 @@ const removeCheckedTasks = () => {
   saveTasksToLocalStorage();
   displayTask();
 };
-
-const convertToInput = () => {
-  const taskDescription = document.querySelector('.taskDescription');
-  if(taskDescription) {
-    const inputElement = document.createElement('input');
-    inputElement.value = taskDescription.innerText;
-    inputElement.classList.add('inputElement');
-    taskDescription.replaceWith(inputElement);
-    inputElement.focus();
-
-    inputElement.addEventListener('blur', () => {
-      const updatedDescription = inputElement.value.trim();
-      if(inputElement !== '') {
-        const taskIndex = tasks.findIndex(
-          (task) => task.description === taskDescription.innerText
-        );
-        tasks[taskIndex].description = updatedDescription;
-        saveTasksToLocalStorage();
-        displayTask();
-      };
-    });
-  };
-};
-
 
 addBtn.addEventListener('click', addTask);
 resetBtn.addEventListener('click', removeAll);
