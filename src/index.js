@@ -22,15 +22,21 @@ const displayTask = () => {
       <input class='checkbox' id='checkbox_${
   task.checkboxId
 }' type='checkbox' ${task.completed ? 'checked' : ''}/>
-      ${task.description}
+      <div class='taskDescription'>${task.description}</div>
     </div>
-    <div><i class='bx bx-dots-vertical-rounded'></i></div>`;
+    <div class='editBtn'><i class='bx bx-dots-vertical-rounded editBtn'></i></div>`;
     const checkbox = listItem.querySelector('.checkbox');
     checkbox.addEventListener('change', () => {
       task.completed = checkbox.checked;
       saveTasksToLocalStorage();
     });
     taskContainer.appendChild(listItem);
+  });
+  taskContainer.addEventListener('click', (event) => {
+    const editBtn = event.target.closest('.editBtn'); // Find the closest ancestor with the class 'editBtn'
+    if (editBtn) {
+      convertToInput();
+    }
   });
 };
 
@@ -69,7 +75,32 @@ const removeCheckedTasks = () => {
   displayTask();
 };
 
+const convertToInput = () => {
+  const taskDescription = document.querySelector('.taskDescription');
+  if(taskDescription) {
+    const inputElement = document.createElement('input');
+    inputElement.value = taskDescription.innerText;
+    inputElement.classList.add('inputElement');
+    taskDescription.replaceWith(inputElement);
+    inputElement.focus();
+
+    inputElement.addEventListener('blur', () => {
+      const updatedDescription = inputElement.value.trim();
+      if(inputElement !== '') {
+        const taskIndex = tasks.findIndex(
+          (task) => task.description === taskDescription.innerText
+        );
+        tasks[taskIndex].description = updatedDescription;
+        saveTasksToLocalStorage();
+        displayTask();
+      };
+    });
+  };
+};
+
+
 addBtn.addEventListener('click', addTask);
 resetBtn.addEventListener('click', removeAll);
 clearBtn.addEventListener('click', removeCheckedTasks);
+
 displayTask();
