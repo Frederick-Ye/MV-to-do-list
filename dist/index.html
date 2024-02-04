@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-do-list</title>
-    <link rel="stylesheet" href="style.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-  </head>
+  <script defer src="/dist/runtime.bundle.js"></script><script defer src="/dist/index.bundle.js"></script></head>
   <body>
     <ul>
       <li class="title">
@@ -27,14 +26,11 @@
         <div><i class="bx bx-list-plus"></i></div>
       </li>
       <div class="dynamicContent">
-          <!-- tasks go here -->
+        <!-- tasks go here -->
       </div>
       <div class="clearBtnContainer">
         <button type="button" id="clearBtn">Clear all completed</button>
       </div>
     </ul>
-
-    <script type="module" src="./index.js"></script>
-    <script type="module" src="./src/variables.js"></script>
   </body>
 </html>
