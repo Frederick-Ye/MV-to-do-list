@@ -25,7 +25,7 @@
     "start": "webpack serve --open",
     "server": "node server.js",
     "build": "webpack",
-    "deploy": "main -d dist"
+    "deploy": "webpack"
   },
   "keywords": [],
   "author": "",
