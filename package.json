@@ -25,7 +25,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
     "server": "node server.js",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
