@@ -23,9 +23,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
     "server": "node server.js",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "main"
   },
-  "homepage": "https://frederick-ye.github.io/MV-to-do-list/",
   "keywords": [],
   "author": "",
   "license": "ISC",
