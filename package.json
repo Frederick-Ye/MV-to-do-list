@@ -23,13 +23,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
     "server": "node server.js",
-<<<<<<< HEAD
-    "build": "webpack",
-    "deploy": "webpack --mode production && gh-pages -d dist",
-    "predeploy": "npm run build"
-=======
     "build": "webpack"
->>>>>>> parent of 994e1c4 (gh pages)
   },
   "homepage": "https://frederick-ye.github.io/MV-to-do-list/",
   "keywords": [],
