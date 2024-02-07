@@ -24,7 +24,7 @@
     "start": "webpack serve --open",
     "server": "node server.js",
     "build": "webpack",
-    "deploy": "main"
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
