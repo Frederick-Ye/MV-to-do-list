@@ -12,6 +12,7 @@
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.21.0",
+    "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
@@ -30,9 +31,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.20",
     "express": "^4.18.2",
-    "webpack": "^5.89.0",
+    "lodash": "^4.17.20",
     "webpack-dev-middleware": "^7.0.0"
   }
 }
