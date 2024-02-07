@@ -5,7 +5,6 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.29.1",
-    "gh-pages": "^6.1.1",
     "hint": "^7.1.10",
     "html-webpack-plugin": "^5.6.0",
     "style-loader": "^3.3.4",
@@ -24,17 +23,21 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
     "server": "node server.js",
+<<<<<<< HEAD
     "build": "webpack",
     "deploy": "webpack --mode production && gh-pages -d dist",
     "predeploy": "npm run build"
+=======
+    "build": "webpack"
+>>>>>>> parent of 994e1c4 (gh pages)
   },
   "homepage": "https://frederick-ye.github.io/MV-to-do-list/",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
     "lodash": "^4.17.20",
+    "express": "^4.18.2",
     "webpack": "^5.89.0",
     "webpack-dev-middleware": "^7.0.0"
   }
